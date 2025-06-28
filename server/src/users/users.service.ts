@@ -20,4 +20,9 @@ export class UsersService {
     const createdUser = new this.userModel({ ...createUserDTO, passwordHash });
     return await createdUser.save();
   }
+
+  async getOneByEmail(email: string) {
+    const user = this.userModel.findOne({ email });
+    return user;
+  }
 }
