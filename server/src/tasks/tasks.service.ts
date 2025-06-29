@@ -14,4 +14,8 @@ export class TasksService {
     const createdTask = new this.taskModel({ user: userId, ...createTaskDTO });
     return createdTask.save();
   }
+
+  async getAllByUser(userId: string): Promise<Task[] | undefined> {
+    return await this.taskModel.find({ user: userId });
+  }
 }
