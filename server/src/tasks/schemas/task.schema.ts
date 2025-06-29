@@ -4,12 +4,6 @@ import { User } from 'src/users/schemas/user.schema';
 
 export type TaskDocument = HydratedDocument<Task>;
 
-enum PriorityEnum {
-  'Low' = 1,
-  'Medium' = 2,
-  'High' = 3,
-}
-
 @Schema()
 export class Task {
   @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true })
@@ -21,7 +15,7 @@ export class Task {
   @Prop({ required: true })
   description: string;
 
-  @Prop({ required: true, enum: Object.values(PriorityEnum) })
+  @Prop({ required: true })
   priority: number;
 
   @Prop({ default: false })

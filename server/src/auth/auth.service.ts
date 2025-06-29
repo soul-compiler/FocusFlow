@@ -12,6 +12,7 @@ export class AuthService {
     private readonly jwtService: JwtService,
   ) {}
 
+  // Function to authenticate an user generate a JWT
   async logIn(body: LoginDTO) {
     const user = await this.userService.getOneByEmail(body.email);
     if (!user) {
@@ -28,6 +29,7 @@ export class AuthService {
     return { message: 'Login exitoso', jwtToken };
   }
 
+  // Verify if a JWT is valid
   async verifyJWT(jwt: string): Promise<{ sub: string; email: string }> {
     try {
       const payload = await this.jwtService.verifyAsync<{
