@@ -1,9 +1,9 @@
-import { AuthForm } from "../features/auth/AuthForm";
+import { LoginForm } from "../features/auth/LoginForm";
 
 export default function LoginPage() {
   return (
     <>
-      <AuthForm />
+      <LoginForm />
     </>
   );
 }

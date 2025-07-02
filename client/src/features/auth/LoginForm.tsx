@@ -1,8 +1,7 @@
 import { useState, type ChangeEvent, type FormEvent } from "react";
-import styles from "./AuthFrom.module.css";
+import styles from "./LoginForm.module.css";
 
 async function callLogin(data: { email: string; password: string }) {
-  console.log(JSON.stringify(data));
   const call = await fetch("http://localhost:3000/auth/login", {
     method: "POST",
     headers: {
@@ -14,7 +13,7 @@ async function callLogin(data: { email: string; password: string }) {
   return await call.json();
 }
 
-export function AuthForm() {
+export function LoginForm() {
   // Setemos los estados que van a contener los valores del formulario
   // Esto para tener un form controlado
   const [email, setEmail] = useState<string>("");
