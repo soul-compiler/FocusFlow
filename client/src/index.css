@@ -7,3 +7,20 @@
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
 }
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 300px;
+}
+
+.form-element {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-label {
+  font-size: 0.8rem;
+  color: rgb(167, 167, 167);
+}

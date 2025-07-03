@@ -40,21 +40,29 @@ export function LoginForm() {
   return (
     <div className={styles.main}>
       <p className="main-title">Login</p>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="email">Email:</label>
-        <input
-          id="email"
-          type="email"
-          value={email}
-          onChange={handleEmailChange}
-        />
-        <label htmlFor="password">Password:</label>
-        <input
-          id="password"
-          type="password"
-          value={password}
-          onChange={handlePasswordChange}
-        />
+      <form onSubmit={handleSubmit} className="form">
+        <div className="form-element">
+          <label htmlFor="email" className="form-label">
+            Email:
+          </label>
+          <input
+            id="email"
+            type="email"
+            value={email}
+            onChange={handleEmailChange}
+          />
+        </div>
+        <div className="form-element">
+          <label htmlFor="password" className="form-label">
+            Password:
+          </label>
+          <input
+            id="password"
+            type="password"
+            value={password}
+            onChange={handlePasswordChange}
+          />
+        </div>
         <button type="submit">Login</button>
       </form>
     </div>

@@ -5,7 +5,7 @@ import {
   type FormEvent,
   type SetStateAction,
 } from "react";
-import style from "./RegisterForm.module.css";
+// import style from "./RegisterForm.module.css";
 
 export default function RegisterForm() {
   const [name, setName] = useState<string>("");
@@ -34,43 +34,59 @@ export default function RegisterForm() {
   return (
     <>
       <div>
-        <form action="submit" className={style.form} onSubmit={handleSubmit}>
-          <label htmlFor="name">Name</label>
-          <input
-            type="text"
-            id="name"
-            onChange={(e) => {
-              handleInput(e, setName);
-            }}
-            value={name}
-          />
-          <label htmlFor="lastName">Last name</label>
-          <input
-            type="text"
-            id="lastName"
-            onChange={(e) => {
-              handleInput(e, setLastName);
-            }}
-            value={lastName}
-          />
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            onChange={(e) => {
-              handleInput(e, setEmail);
-            }}
-            value={email}
-          />
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            onChange={(e) => {
-              handleInput(e, setPassword);
-            }}
-            value={password}
-          />
+        <form action="submit" className="form" onSubmit={handleSubmit}>
+          <div className="form-element">
+            <label htmlFor="name" className="form-label">
+              Name
+            </label>
+            <input
+              type="text"
+              id="name"
+              onChange={(e) => {
+                handleInput(e, setName);
+              }}
+              value={name}
+            />
+          </div>
+          <div className="form-element">
+            <label htmlFor="lastName" className="form-label">
+              Last name
+            </label>
+            <input
+              type="text"
+              id="lastName"
+              onChange={(e) => {
+                handleInput(e, setLastName);
+              }}
+              value={lastName}
+            />
+          </div>
+          <div className="form-element">
+            <label htmlFor="email" className="form-label">
+              Email
+            </label>
+            <input
+              type="email"
+              id="email"
+              onChange={(e) => {
+                handleInput(e, setEmail);
+              }}
+              value={email}
+            />
+          </div>
+          <div className="form-element">
+            <label htmlFor="password" className="form-label">
+              Password
+            </label>
+            <input
+              type="password"
+              id="password"
+              onChange={(e) => {
+                handleInput(e, setPassword);
+              }}
+              value={password}
+            />
+          </div>
           <button type="submit">Register</button>
         </form>
       </div>

@@ -1,0 +1,16 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 300px;
+}
+
+.formElement {
+  display: flex;
+  flex-direction: column;
+}
+
+.formLabel {
+  font-size: 0.8rem;
+  color: rgb(167, 167, 167);
+}
