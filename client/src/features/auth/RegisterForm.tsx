@@ -1,10 +1,5 @@
-import {
-  useState,
-  type ChangeEvent,
-  type Dispatch,
-  type FormEvent,
-  type SetStateAction,
-} from "react";
+import { useState, type FormEvent } from "react";
+import handleInput from "../../lib/handleInput";
 // import style from "./RegisterForm.module.css";
 
 export default function RegisterForm() {
@@ -12,13 +7,6 @@ export default function RegisterForm() {
   const [lastName, setLastName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-
-  const handleInput = (
-    event: ChangeEvent<HTMLInputElement>,
-    setter: Dispatch<SetStateAction<string>>
-  ) => {
-    setter(event.target.value);
-  };
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
