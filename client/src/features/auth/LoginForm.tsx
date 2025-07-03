@@ -10,7 +10,9 @@ async function callLogin(data: { email: string; password: string }) {
     body: JSON.stringify(data),
   });
 
-  return await call.json();
+  const responseData = await call.json();
+  document.cookie = `jwtToken=${responseData.jwtToken}`;
+  return responseData;
 }
 
 export function LoginForm() {
