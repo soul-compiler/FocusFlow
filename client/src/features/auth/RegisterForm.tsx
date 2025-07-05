@@ -21,7 +21,8 @@ export default function RegisterForm() {
 
   return (
     <>
-      <div>
+      <div className="form-div center">
+        <p className="main-title">Register</p>
         <form action="submit" className="form" onSubmit={handleSubmit}>
           <div className="form-element">
             <label htmlFor="name" className="form-label">
@@ -75,7 +76,9 @@ export default function RegisterForm() {
               value={password}
             />
           </div>
-          <button type="submit">Register</button>
+          <button type="submit" className="form-button">
+            Register
+          </button>
         </form>
       </div>
     </>

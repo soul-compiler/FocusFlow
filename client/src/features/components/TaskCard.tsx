@@ -7,7 +7,7 @@ export default function TaskCard(props: {
 }) {
   return (
     <>
-      <div className={styles.card}>
+      <div className={`form-div ${styles.card}`}>
         <h1>{props.title}</h1>
         <p>{props.description}</p>
         <p>Priority: {props.priority}</p>

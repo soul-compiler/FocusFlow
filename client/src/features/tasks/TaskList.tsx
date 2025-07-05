@@ -1,6 +1,7 @@
 import getCookie from "../../lib/getCookie";
 import TaskCard from "../components/TaskCard";
 import { useEffect, useState } from "react";
+import styles from "./TaskList.module.css";
 
 export default function TaskList() {
   const [tasks, setTasks] = useState<
@@ -31,11 +32,10 @@ export default function TaskList() {
 
   return (
     <>
-      TaskList
       {isLoading ? (
         <p>Loading</p>
       ) : (
-        <div>
+        <div className={`${styles.gridContianer}`}>
           {tasks.map((task) => {
             return (
               <TaskCard
@@ -46,7 +46,6 @@ export default function TaskList() {
               />
             );
           })}
-          <button onClick={() => console.log(tasks)}>Log tasks</button>
         </div>
       )}
     </>

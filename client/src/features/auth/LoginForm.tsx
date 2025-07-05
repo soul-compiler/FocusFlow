@@ -1,5 +1,4 @@
 import { useState, type ChangeEvent, type FormEvent } from "react";
-import styles from "./LoginForm.module.css";
 
 async function callLogin(data: { email: string; password: string }) {
   const call = await fetch("http://localhost:3000/auth/login", {
@@ -40,7 +39,7 @@ export function LoginForm() {
 
   // HTML
   return (
-    <div className={styles.main}>
+    <div className="form-div center">
       <p className="main-title">Login</p>
       <form onSubmit={handleSubmit} className="form">
         <div className="form-element">
@@ -65,7 +64,9 @@ export function LoginForm() {
             onChange={handlePasswordChange}
           />
         </div>
-        <button type="submit">Login</button>
+        <button type="submit" className="form-button">
+          Login
+        </button>
       </form>
     </div>
   );

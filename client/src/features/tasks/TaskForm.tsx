@@ -22,8 +22,8 @@ export default function TaskForm() {
   };
 
   return (
-    <>
-      <h1>Create a TaskForm</h1>
+    <div className="form-div">
+      <p className="main-title">Create a Task</p>
       <form action="submit" className="form" onSubmit={handleSubmit}>
         <div className="form-element">
           <label htmlFor="" className="form-label">
@@ -55,8 +55,10 @@ export default function TaskForm() {
             value={priority}
           />
         </div>
-        <button type="submit">Create</button>
+        <button type="submit" className="form-button">
+          Create
+        </button>
       </form>
-    </>
+    </div>
   );
 }
