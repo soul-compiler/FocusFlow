@@ -1,5 +1,6 @@
 import { NavLink } from "react-router";
 import style from "./NavBar.module.css";
+import { eraseCookies } from "../../lib/getCookie";
 
 export default function NavBar(props: { isLogged: boolean }) {
   return (
@@ -39,16 +40,15 @@ export default function NavBar(props: { isLogged: boolean }) {
         </>
       ) : (
         <>
-          <NavLink
-            to="/logout"
-            className={({ isActive }) => {
-              return isActive
-                ? `${style.navItemActive} ${style.navItem}`
-                : style.navItem;
+          <a
+            className={`${style.navItem}`}
+            onClick={() => {
+              eraseCookies("jwtToken");
+              console.log("Hola");
             }}
           >
             Logout
-          </NavLink>
+          </a>
         </>
       )}
     </nav>

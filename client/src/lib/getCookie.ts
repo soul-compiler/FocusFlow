@@ -11,7 +11,11 @@ const getCookie = (name: string) => {
 };
 
 const setCookie = (key: string, value: string) => {
-  document.cookie = `${key}=${value}`;
+  document.cookie = `${key}=${value}; Path=/;`;
 };
 
-export { getCookie, setCookie };
+const eraseCookies = (key: string) => {
+  document.cookie = `${key}=; Path=/;`;
+};
+
+export { getCookie, setCookie, eraseCookies };

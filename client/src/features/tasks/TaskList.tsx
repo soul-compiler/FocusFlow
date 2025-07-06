@@ -1,4 +1,4 @@
-import { getCookie } from "../../lib/getCookie";
+import { eraseCookies, getCookie } from "../../lib/getCookie";
 import TaskCard from "../components/TaskCard";
 import { useEffect, useState } from "react";
 import styles from "./TaskList.module.css";
@@ -15,10 +15,11 @@ export default function TaskList() {
     }>
   >([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const token = "Bearer " + getCookie("jwtToken");
+  const jwt = getCookie("jwtToken");
+  const token = "Bearer " + jwt;
 
   useEffect(() => {
-    if (token == "Bearer ") {
+    if (jwt == "" || !jwt) {
       navigator("/login");
     } else {
       fetch("http://localhost:3000/tasks/", {
@@ -30,6 +31,7 @@ export default function TaskList() {
         .then((response) => response.json())
         .then((data) => {
           if (data?.message == "Unauthorized") {
+            eraseCookies("jwtToken");
             navigator("/login");
           } else {
             setTasks(data);
