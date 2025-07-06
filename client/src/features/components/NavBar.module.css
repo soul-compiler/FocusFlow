@@ -3,14 +3,16 @@
   flex-direction: row;
   background-color: rgb(15, 15, 15);
   gap: 1rem;
-  justify-content: center;
-  padding: 1rem;
+  justify-content: space-between;
+  padding: 0 2rem;
+  align-items: center;
 }
 
 .navItem {
   text-decoration: none;
   color: white;
   transition: all 0.4s;
+  cursor: pointer;
 }
 
 .navItem:hover {
@@ -19,4 +21,14 @@
 
 .navItemActive {
   color: rgb(0, 72, 124);
+}
+
+.navLinks {
+  display: flex;
+  gap: 1rem;
+}
+
+.navTitle {
+  font-weight: 700;
+  color: #005a9a;
 }
