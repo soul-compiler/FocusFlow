@@ -1,19 +1,6 @@
 import { useState, type ChangeEvent, type FormEvent } from "react";
 import { useNavigate } from "react-router";
-
-async function callLogin(data: { email: string; password: string }) {
-  const call = await fetch("http://localhost:3000/auth/login", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-  });
-
-  const responseData = await call.json();
-  document.cookie = `jwtToken=${responseData.jwtToken}`;
-  return responseData;
-}
+import { login } from "../../api/auth";
 
 export function LoginForm() {
   const navigate = useNavigate();
@@ -26,7 +13,7 @@ export function LoginForm() {
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     // Llamado al servicio
     event.preventDefault();
-    console.log(await callLogin({ email, password }));
+    console.log(await login({ email, password }));
     navigate("/");
   };
 

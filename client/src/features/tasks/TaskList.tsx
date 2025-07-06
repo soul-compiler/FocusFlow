@@ -2,8 +2,10 @@ import { getCookie } from "../../lib/getCookie";
 import TaskCard from "../components/TaskCard";
 import { useEffect, useState } from "react";
 import styles from "./TaskList.module.css";
+import { useNavigate } from "react-router";
 
 export default function TaskList() {
+  const navigator = useNavigate();
   const [tasks, setTasks] = useState<
     Array<{
       _id: string;
@@ -16,17 +18,25 @@ export default function TaskList() {
   const token = "Bearer " + getCookie("jwtToken");
 
   useEffect(() => {
-    fetch("http://localhost:3000/tasks/", {
-      method: "GET",
-      headers: {
-        Authorization: token,
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        setTasks(data);
-        setIsLoading(false);
-      });
+    if (token == "Bearer ") {
+      navigator("/login");
+    } else {
+      fetch("http://localhost:3000/tasks/", {
+        method: "GET",
+        headers: {
+          Authorization: token,
+        },
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          if (data?.message == "Unauthorized") {
+            navigator("/login");
+          } else {
+            setTasks(data);
+            setIsLoading(false);
+          }
+        });
+    }
   }, []);
 
   return (

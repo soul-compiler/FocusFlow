@@ -1,22 +1,27 @@
 import { useState, type FormEvent } from "react";
 import handleInput from "../../lib/handleInput";
-// import style from "./RegisterForm.module.css";
+import { useNavigate } from "react-router";
+import { register } from "../../api/auth";
 
 export default function RegisterForm() {
+  const navigate = useNavigate();
   const [name, setName] = useState<string>("");
   const [lastName, setLastName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
+  const [error, setError] = useState<string>("");
+
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const request = { name, lastName, email, password };
-    const data = await fetch("http://localhost:3000/users/register", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(request),
-    });
-    console.log(await data.json());
+    const data = await register(request);
+    if (data?._id) {
+      setError("");
+      navigate("/login");
+    } else {
+      setError("Error al crear el usuario");
+    }
   };
 
   return (
@@ -76,6 +81,7 @@ export default function RegisterForm() {
               value={password}
             />
           </div>
+          {error != "" && <p>{error}</p>}
           <button type="submit" className="form-button">
             Register
           </button>
