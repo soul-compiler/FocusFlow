@@ -1,5 +1,6 @@
+import CreateTaskButton from "../features/components/CreateTaskButton";
 import NavBar from "../features/components/NavBar";
-import TaskForm from "../features/tasks/TaskForm";
+
 import TaskList from "../features/tasks/TaskList";
 import getCookie from "../lib/getCookie";
 export default function HomePage() {
@@ -8,11 +9,10 @@ export default function HomePage() {
   return (
     <>
       <NavBar isLogged={token ? true : false} />
-      <h1>Home Page</h1>
       {token ? (
         <>
-          <TaskForm />
           <TaskList />
+          <CreateTaskButton />
         </>
       ) : (
         <h1>Please Login</h1>
