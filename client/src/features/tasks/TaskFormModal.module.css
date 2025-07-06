@@ -1,0 +1,39 @@
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.modalActive {
+  display: block;
+  opacity: 1;
+  transition: all 0.4s;
+}
+
+.modalNotActive {
+  display: none;
+  opacity: 0;
+}
+
+.modalBackground {
+  top: 0;
+  left: 0;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.574);
+}
+
+.closeWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.closeButton {
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
+}

@@ -1,4 +1,4 @@
-import getCookie from "../../lib/getCookie";
+import { getCookie } from "../../lib/getCookie";
 import TaskCard from "../components/TaskCard";
 import { useEffect, useState } from "react";
 import styles from "./TaskList.module.css";

@@ -10,4 +10,8 @@ const getCookie = (name: string) => {
   return null;
 };
 
-export default getCookie;
+const setCookie = (key: string, value: string) => {
+  document.cookie = `${key}=${value}`;
+};
+
+export { getCookie, setCookie };
