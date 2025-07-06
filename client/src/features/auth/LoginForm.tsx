@@ -1,4 +1,5 @@
 import { useState, type ChangeEvent, type FormEvent } from "react";
+import { useNavigate } from "react-router";
 
 async function callLogin(data: { email: string; password: string }) {
   const call = await fetch("http://localhost:3000/auth/login", {
@@ -15,6 +16,7 @@ async function callLogin(data: { email: string; password: string }) {
 }
 
 export function LoginForm() {
+  const navigate = useNavigate();
   // Setemos los estados que van a contener los valores del formulario
   // Esto para tener un form controlado
   const [email, setEmail] = useState<string>("");
@@ -25,6 +27,7 @@ export function LoginForm() {
     // Llamado al servicio
     event.preventDefault();
     console.log(await callLogin({ email, password }));
+    navigate("/");
   };
 
   // Función que maneja el estado del email, onChange
