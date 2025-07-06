@@ -12,7 +12,7 @@ export default function HomePage() {
     if (token == "" || !token) {
       navigator("/login");
     }
-  }, []);
+  }, [token]);
   return (
     <>
       <NavBar isLogged={token ? true : false} />
