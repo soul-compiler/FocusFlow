@@ -24,7 +24,6 @@ export default function TaskList() {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         setTasks(data);
         setIsLoading(false);
       });
