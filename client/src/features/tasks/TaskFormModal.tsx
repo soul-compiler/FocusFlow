@@ -11,14 +11,24 @@ import { createTask } from "../../api/task";
 export default function TaskFormModal(props: {
   isModalActive: boolean;
   setModal: Dispatch<SetStateAction<boolean>>;
+  setReloadTask: () => void;
 }) {
   const [title, setTitle] = useState<string>("");
   const [description, setDescription] = useState<string>("");
   const [priority, setPriority] = useState<string>("");
 
+  const clearFields = () => {
+    setTitle("");
+    setDescription("");
+    setPriority("");
+  };
+
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     await createTask({ title, description, priority });
+    props.setReloadTask();
+    props.setModal(false);
+    clearFields();
   };
 
   return (

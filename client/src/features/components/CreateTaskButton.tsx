@@ -3,7 +3,7 @@ import styles from "./CreateTaskButton.module.css";
 import TaskFormModal from "../tasks/TaskFormModal";
 import { useState } from "react";
 
-export default function CreateTaskButton() {
+export default function CreateTaskButton(props: { setReloadTask: () => void }) {
   const [isModalActive, setIsModalActive] = useState<boolean>(false);
 
   const handleClick = () => {
@@ -14,6 +14,7 @@ export default function CreateTaskButton() {
       <TaskFormModal
         isModalActive={isModalActive}
         setModal={setIsModalActive}
+        setReloadTask={props.setReloadTask}
       />
       <IoAddCircle
         size={50}

@@ -3,3 +3,25 @@
   height: 300px;
   width: 100%;
 }
+
+.headerWrapper {
+  gap: 1rem;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  cursor: pointer;
+}
+
+.headerElement {
+  width: 1rem;
+  height: 1rem;
+  transition: all 0.4s;
+}
+
+.headerElementErase:hover {
+  color: red;
+}
+
+.headerElementModify:hover {
+  color: rgb(137, 137, 137);
+}

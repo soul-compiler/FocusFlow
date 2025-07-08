@@ -16,4 +16,14 @@ const createTask = (body: {
   });
 };
 
-export { createTask };
+const deleteTask = (taskId: string) => {
+  const jwtToken = "Bearer " + getCookie("jwtToken");
+  return fetch(`http://localhost:3000/tasks/${taskId}`, {
+    method: "DELETE",
+    headers: {
+      Authorization: jwtToken,
+    },
+  });
+};
+
+export { createTask, deleteTask };

@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import styles from "./TaskList.module.css";
 import { useNavigate } from "react-router";
 
-export default function TaskList() {
+export default function TaskList(props: { reloadTask: boolean }) {
   const navigator = useNavigate();
   const [tasks, setTasks] = useState<
     Array<{
@@ -18,7 +18,7 @@ export default function TaskList() {
   const jwt = getCookie("jwtToken");
   const token = "Bearer " + jwt;
 
-  useEffect(() => {
+  function fetchTask(): void {
     if (jwt == "" || !jwt) {
       navigator("/login");
     } else {
@@ -39,7 +39,11 @@ export default function TaskList() {
           }
         });
     }
-  }, []);
+  }
+
+  useEffect(() => {
+    fetchTask();
+  }, [props.reloadTask]);
 
   return (
     <>
@@ -51,9 +55,11 @@ export default function TaskList() {
             return (
               <TaskCard
                 key={task._id}
+                id={task._id}
                 title={task.title}
                 description={task.description}
                 priority={task.priority}
+                fetchTask={fetchTask}
               />
             );
           })}
