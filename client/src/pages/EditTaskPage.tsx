@@ -4,8 +4,12 @@ import { useEffect, useState } from "react";
 import { getOneTask } from "../api/task";
 import type { Task } from "../types/task";
 
+type RequestParams = {
+  id: string;
+};
+
 export default function EditTaskPage() {
-  const { id } = useParams();
+  const { id } = useParams<RequestParams>();
   const [task, setTask] = useState<Task>();
 
   useEffect(() => {
