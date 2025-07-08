@@ -26,4 +26,15 @@ const deleteTask = (taskId: string) => {
   });
 };
 
-export { createTask, deleteTask };
+const getOneTask = async (id: string) => {
+  const jwtToken = "Bearer " + getCookie("jwtToken");
+  const response = await fetch(`http://localhost:3000/tasks/${id}`, {
+    method: "GET",
+    headers: {
+      Authorization: jwtToken,
+    },
+  });
+  return await response.json();
+};
+
+export { createTask, deleteTask, getOneTask };
