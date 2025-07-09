@@ -3,6 +3,7 @@ import NavBar from "../features/components/NavBar";
 import { useEffect, useState } from "react";
 import { getOneTask } from "../api/task";
 import type { Task } from "../types/task";
+import ModifyTask from "../features/tasks/ModifyTask";
 
 type RequestParams = {
   id: string;
@@ -16,11 +17,11 @@ export default function EditTaskPage() {
     if (id) {
       getOneTask(id).then((e) => setTask(e));
     }
-  }, []);
+  }, [id]);
   return (
     <>
       <NavBar isLogged={true} />
-      {task?.title}
+      {task ? <ModifyTask task={task} /> : <h1>No se encontro la task</h1>}
     </>
   );
 }

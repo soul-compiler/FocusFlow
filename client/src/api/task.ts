@@ -1,4 +1,5 @@
 import { getCookie } from "../lib/getCookie";
+import type { ModifyTask } from "../types/task";
 
 const createTask = (body: {
   title: string;
@@ -37,4 +38,19 @@ const getOneTask = async (id: string) => {
   return await response.json();
 };
 
-export { createTask, deleteTask, getOneTask };
+const modifyTask = async (id: string, modifiedTask: ModifyTask) => {
+  const jwtToken = "Bearer " + getCookie("jwtToken");
+  const response = await fetch(`http://localhost:3000/tasks/${id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: jwtToken,
+    },
+    body: JSON.stringify(modifiedTask),
+  });
+  console.log(id);
+  console.log(JSON.stringify(modifiedTask));
+  return await response.json();
+};
+
+export { createTask, deleteTask, getOneTask, modifyTask };

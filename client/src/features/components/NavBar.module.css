@@ -4,7 +4,7 @@
   background-color: rgb(15, 15, 15);
   gap: 1rem;
   justify-content: space-between;
-  padding: 0 2rem;
+  padding: 1rem 2rem;
   align-items: center;
 }
 
@@ -29,6 +29,7 @@
 }
 
 .navTitle {
+  text-decoration: none;
   font-weight: 700;
   color: #005a9a;
 }

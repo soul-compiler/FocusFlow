@@ -7,7 +7,9 @@ export default function NavBar(props: { isLogged: boolean }) {
   return (
     <nav className={style.nav}>
       <div>
-        <p className={style.navTitle}>FocusFlow</p>
+        <NavLink to="/" className={style.navTitle}>
+          FocusFlow
+        </NavLink>
       </div>
       <div className={style.navLinks}>
         {!props.isLogged ? (

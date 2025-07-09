@@ -2,7 +2,7 @@ import styles from "./TaskCard.module.css";
 import { FaRegTrashCan } from "react-icons/fa6";
 import { MdModeEdit } from "react-icons/md";
 import { deleteTask } from "../../api/task";
-// import { useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 
 export default function TaskCard(props: {
   id: string;
@@ -11,7 +11,7 @@ export default function TaskCard(props: {
   priority: number;
   fetchTask: () => void;
 }) {
-  // const navigator = useNavigate();
+  const navigator = useNavigate();
   const handleEreseClick = async () => {
     await deleteTask(props.id);
     props.fetchTask();
@@ -23,6 +23,9 @@ export default function TaskCard(props: {
         <div className={styles.headerWrapper}>
           <MdModeEdit
             className={`${styles.headerElement} ${styles.headerElementModify}`}
+            onClick={() => {
+              navigator(`/task/${props.id}`);
+            }}
           />
           <FaRegTrashCan
             className={`${styles.headerElement} ${styles.headerElementErase}`}
